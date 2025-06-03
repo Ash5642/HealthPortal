@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+
+    <style>
+        hr{
+            color: #fdfdfd
+        }
+        .topnav {
+            background-color: #fff;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+          }
+          
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+          
+        .topnav a.active {
+            background-color: #fff;
+            color: white;
+        }
+          
+        .topnav .icon {
+            display: none;
+        }
+        @media screen and (max-width: 600px) {
+            .topnav a:not(:first-child) {display: none;}
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+          
+          /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+          @media screen and (max-width: 600px) {
+            .topnav.responsive {position: relative;}
+            .topnav.responsive a.icon {
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            .topnav.responsive a {
+              float: none;
+              display: block;
+              text-align: left;
+            }
+          }
+
+          .row {
+            display: flex;
+          }
+          
+          .column {
+            flex: auto;
+            padding: 5px;
+          }
+
+        @font-face{
+            font-family: OpenSansBold;
+            src: url(static/Open_Sans/static/OpenSans-SemiBold.ttf)
+        }
+        @font-face{
+            font-family: OpenSansMedium;
+            src: url(static/Open_Sans/static/OpenSans-Medium.ttf)
+        }
+        .Bold{
+            font-family: OpenSansBold
+        }
+        .Medium{
+            font-family: OpenSansMedium
+        }
+
+        .Gray{
+            color: #666666;
+        }
+        .DGray{
+            color: #aaa;
+        }
+        .Card{
+            border: 1px solid #ddd;
+            margin: 0% 2% 0% 2%;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 5px
+        }
+
+    </style>
+
+    <body style="max-height: 1000px; max-width: 400px; padding: 0px; margin: 0px; background-color:#f0f0f0">
+        <div class="topnav" id="myTopnav">
+            <a href="#home" class="active">
+                <img width="24" height="24" src="/media/images/AppointmentsPhoto.jpg">
+            </a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div id="Tab">
+        </div>
+    </body>
+
+    <script>
+        var Page__Id = 1
+    </script>
+
+<script>
+    function OverLay(){
+            for (var thing = 0; thing < document.getElementsByClassName('navbar').length; thing++) {
+                document.getElementsByClassName('navbar')[thing].style.display = 'none'
+            }
+            document.getElementById('overlay').style.display = ''
+                const state = { 'page_id': 1, 'user_id': 5 }
+                const title = ''
+                const url = window.location.pathname
+                history.pushState(state, title, url)
+        }
+        function Back(){
+            history.go(-1)
+        }
+        function Back_Other(){
+            
+            MainBody = document.getElementById("Tab")
+            MainBody.removeChild(MainBody.lastElementChild)
+            if(document.getElementById("Tab").lastElementChild){
+                document.getElementById("Tab").lastElementChild.style.dispay = ''
+                if (document.getElementById("Tab").lastElementChild.getAttribute('show_statusbar')=='false'){
+                }
+                else{
+                    
+                }
+            if (document.getElementById("Tab").lastElementChild.getAttribute('class').toString().includes('Animate-right')){
+                document.getElementById("Tab").lastElementChild.setAttribute('class', 'Animate-left BodyPage')
+            }
+            if (document.getElementById("Tab").lastElementChild.getAttribute('class').toString().includes('Animate-bottom')){
+                document.getElementById("Tab").lastElementChild.setAttribute('class', 'Animate-top BodyPage')
+            }
+            else{
+                document.getElementById("Tab").lastElementChild.setAttribute('class', 'Animate-left BodyPage')
+            }
+            document.getElementById(MainBody.lastElementChild.id).style.display = ''
+            }
+
+        }
+        function HideStuff(){
+            history.go(-1)
+        }
+        function HideStuffOther(){
+            if(document.getElementById("mySidebar")){
+                document.getElementById("mySidebar").style.width = "0"
+            }
+            document.getElementsByClassName('navb')
+            for (var thing = 0; thing < document.getElementsByClassName('navb').length; thing++) {
+                document.getElementsByClassName('navb')[thing].style.display = 'none'
+            }
+            document.getElementById('overlay').style.display = 'none'
+            for (var thing = 0; thing < document.getElementsByClassName('navbar').length; thing++) {
+                document.getElementsByClassName('navbar')[thing].style.display = ''
+            }
+        }
+        function OverLay(){
+            for (var thing = 0; thing < document.getElementsByClassName('navbar').length; thing++) {
+                document.getElementsByClassName('navbar')[thing].style.display = 'none'
+            }
+            document.getElementById('overlay').style.display = ''
+            const state = { 'page_id': 1, 'user_id': 5 }
+            const title = ''
+            const url = window.location.pathname
+            history.pushState(state, title, url)
+        }
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "80vw";
+            OverLay()
+        }
+        window.addEventListener('popstate', 
+            function (event) {
+                Back_Other()
+            }
+        )
+        function UpdateImage(from, target){
+            var selectedFile = document.getElementById(from).files[0];
+            var img = document.getElementById(target)
+
+            var reader = new FileReader();
+            reader.onload = function(){
+                img.src = this.result
+            }
+            reader.readAsDataURL(selectedFile);
+        }
+    </script>
+
+    <script>
+        function RequestLocationPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br><br>
+                    <div id="SearchArea" style"text-align: center, font-size: 30px; width: 100%">
+                        please grant location access to use this app
+                    </div>
+                </div>
+            `
+            )
+            if(LastLocation == null){
+                navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+            }
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function RegisterPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            HomeId = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br>
+
+                    <div id="SearchArea" >
+                        <div>
+                            <img id="ImageP_${Id}" style="width: 60px; height: 60px; margin: 10%; border-radius: 50%" onclick="document.getElementById('Image_${Id}').click()">
+                        </div>
+                        <div style="position: absolute; width:100%">
+                            <input id="UserName_${Id}" placeholder="username" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Name_${Id}" placeholder="Name" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Password_${Id}" placeholder="Password" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br><br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Biirthdate_${Id}" placeholder="birth date" type="date" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <input id="Image_${Id}" type="file" id="img" name="img" accept="image/*" style="display: none" onchange="UpdateImage('Image_${Id}', 'ImageP_${Id}')">
+                    </div>
+                    <br><br><br>
+                    <div onclick="Register(${Id})" class="Card" style="width: 80%; margin: 0% 10% 0% 10%">Register</div>
+
+                    <div style="text-align: center" class="Gray" onclick="LogInPage()">
+                        have an account? sign in instead
+                    </div>
+                </div>
+            `
+            )
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function LogInPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            HomeId = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br>
+
+                    <div id="SearchArea" >
+                        <div style="position: absolute; width:100%">
+                            <input id="UserName_${Id}" placeholder="username" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Password_${Id}" placeholder="Password" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div onclick="SignIn(${Id})" class="Card" style="width: 80%; margin: 0% 10% 0% 10%">Sign in</div>
+                    <div style="text-align: center" class="Gray" onclick="RegisterPage()">
+                        new? register now!
+                    </div>
+                </div>
+            `
+            )
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function HomePage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            HomeId = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br>
+                    <div id="SearchArea" >
+                        <div style="position: absolute; width:100%">
+                            <input id="SearchBar_${Id}" placeholder="Search medicines, pharmacies,and health products" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div id="ResultsBox_${Id}" style="margin: 0% 5% 0% 5%">
+                        <div id="ResultsBox_Drugs_${Id}">
+
+                        </div>
+                        <div id="ResultsBox_Pharmacies_${Id}">
+
+                        </div>
+                        <div class="Card Medium" id="HomeHeader_${Id}" style="font-size: 12px">
+                            <div class="row" style="padding: 0px; max-width: 90px; margin-left: 10px">
+                                <img src="/media/images/PharmacyPhoto.webp" style="height:90px; width:90px; border-radius: 10px">
+                                <div style="text-align: center"><br><br>Medicine</div>
+                            </div>
+                            <br>
+                            <div class="row" onclick="DoctorFilterPage()" style="padding: 0px; max-width: 90px; margin-left: 10px">
+                                <img src="/media/images/DoctorImage.webp" style="height:90px; width:90px; border-radius: 10px">
+                                <div style="text-align: center"><br><br>Doctors</div>
+                            </div>
+                            <br>
+                            <div class="row" onclick="UserAppointmentPage()" style="padding: 0px; max-width: 90px; margin-left: 10px">
+                                <img src="/media/images/AppointmentsPhoto.jpg" style="height:90px; width:90px; border-radius: 10px">
+                                <div style="text-align: center"><br><br>appointments</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            `
+            )
+            // Get the input box
+            let input = document.getElementById(`SearchBar_${HomeId}`);
+
+            // Init a timeout variable to be used below
+            let timeout = null;
+            LastSearch = null;
+            // Listen for keystroke events
+            input.addEventListener('keyup', function (e) {
+                // Clear the timeout if it has already been set.
+                // This will prevent the previous task from executing
+                // if it has been less than <MILLISECONDS>
+                clearTimeout(timeout);
+
+                // Make a new timeout set to go off in 1000ms (1 second)
+                timeout = setTimeout(function () {
+                    console.log('Input Value:', input.value);
+                    if(LastSearch != input.value){
+                        SearchDrugs(input.value, HomeId)
+                    }
+                    else{
+                        LastSearch = input.value
+                    }
+                   
+                    
+                }, 1000);
+            });
+
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+            function GenericDrugPage(name){
+                for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                    document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+                }
+                Id = Page__Id
+                Page__Id++
+                console.log(Tab)
+                document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                    <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                        <br><br><br>
+                        <div class="Card">
+                            <div id="DrugName_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%; font-size: 20px"></div>
+                            <div id="DrugWrittenBy_${Page__Id}" class="Medium Gray"  style="margin: 0% 0% 0% 5%; font-size: 14px"></div>
+                            <div id="DrugUpdatedOn_${Page__Id}" class="Medium Gray"  style="margin: 0% 0% 0% 5%; font-size: 14px"></div>
+                            <div id="DrugUsesContainer_${Page__Id}" style="display: none">
+                                <br>
+                                <div id="DrugUses_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%"></div>
+                                <div id="DrugUsesInner_${Page__Id}" class="Medium"  style="margin: 0% 5% 0% 5%; font-size: 14px;"></div>
+                            </div>
+                            <div id="DrugMechanismContainer_${Page__Id}" style="display: none">
+                                <br>
+                                <div id="DrugMechanism_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%"></div>
+                                <div id="DrugMechanismInner_${Page__Id}" class="Medium"  style="margin: 0% 5% 0% 5%; font-size: 14px;"></div>
+                            </div>
+                            <div id="DrugSideEffectsContainer_${Page__Id}" style="display: none">
+                                <br>
+                                <div id="DrugSideEffects_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%"></div>
+                                <div id="DrugSideEffectsInner_${Page__Id}" class="Medium"  style="margin: 0% 5% 0% 5%; font-size: 14px;"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="">
+                            <div id="DrugSideEffects_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%">Available brands</div>
+                            <div id="DrugBrandContainer_${Page__Id}">
+                                <br>
+                                </div>
+                    </div>
+                `
+                )
+                FetchGenericDrugPage(name, Page__Id)
+                const state = {'page_id': 1, 'user_id': 5}
+                const title = ''
+                const url = ``
+                history.pushState(state, title, url)
+            }
+
+            function DrugFormPage(id){
+                for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                    document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+                }
+                Id = Page__Id
+                Page__Id++
+                console.log(Tab)
+
+                document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                    <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                        <br><br><br>
+                        <div style="width:100%; background-color: #ffffff; padding: 10px 0px 10px 0px">
+                            <div id="DrugName_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%; font-size: 20px"></div>
+                            <div id="GenericName_${Page__Id}" class="Medium Gray"  style="margin: 0% 0% 0% 5%; font-size: 14px"></div>
+                            <div id="Manafacturer_${Page__Id}" class="Medium Gray"  style="margin: 0% 0% 0% 5%; font-size: 14px"></div>
+                            <div id="DrugUsesContainer_${Page__Id}" style="display: none">
+                                <br>
+                                <div id="DrugUses_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%"></div>
+                                <div id="DrugUsesInner_${Page__Id}" class="Medium"  style="margin: 0% 5% 0% 5%; font-size: 14px;"></div>
+                            </div>
+                            <div id="DrugMechanismContainer_${Page__Id}" style="display: none">
+                                <br>
+                                <div id="DrugMechanism_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%"></div>
+                                <div id="DrugMechanismInner_${Page__Id}" class="Medium"  style="margin: 0% 5% 0% 5%; font-size: 14px;"></div>
+                            </div>
+                            <div id="DrugSideEffectsContainer_${Page__Id}" style="display: none">
+                                <br>
+                                <div id="DrugSideEffects_${Page__Id}" class="Bold"  style="margin: 0% 0% 0% 5%"></div>
+                                <div id="DrugSideEffectsInner_${Page__Id}" class="Medium"  style="margin: 0% 5% 0% 5%; font-size: 14px;"></div>
+                            </div>
+                        </div>
+                        <br>
+                        <div style="width:100%">
+                            <div class="Bold"  style="margin: 0% 0% 0% 5%">Check availibility</div>
+                            <div id="AvailableAt_${Page__Id}"></div>
+                        </div>
+                        <br>
+                        <div>
+                            <div class="Bold"  style="margin: 0% 0% 0% 5%">Check alternatives</div>
+                            <div id="AlternativesAvailable_${Page__Id}"></div>
+                        </div>
+                    </div>
+                `
+                )
+                FetchAvailableFormPage(id, Page__Id)
+        
+                FetchAvailableLocations(id, Page__Id)
+                const state = {'page_id': 1, 'user_id': 5}
+                const title = ''
+                const url = ``
+                history.pushState(state, title, url)
+            }
+
+            function PharmacyPage(id){
+                for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                    document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+                }
+                Id = Page__Id
+                Page__Id++
+                console.log(Tab)
+                document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                    <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+
+                        <br><br>
+                        <div id="PharmacyHeader_${Page__Id}" class="Card">
+                            
+                        </div>
+                        <br>
+                        <div id="SearchArea" >
+                            <div style=" width:100%">
+                                <input id="SearchBar_${Id}" placeholder="Search medicines in inventory" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+    
+                            </div>
+                        </div>
+                        <br>
+                        <div id="PharmacyStockHeader_${Page__Id}">
+                            <div id="InvBox_${Page__Id}"></div>
+                        </div>
+                    </div>
+                `
+                )
+                let input = document.getElementById(`SearchBar_${Id}`);
+
+                // Init a timeout variable to be used below
+                let timeout = null;
+                LastSearch = null;
+                // Listen for keystroke events
+                input.addEventListener('keyup', function (e) {
+                    // Clear the timeout if it has already been set.
+                    // This will prevent the previous task from executing
+                    // if it has been less than <MILLISECONDS>
+                    clearTimeout(timeout);
+
+                    // Make a new timeout set to go off in 1000ms (1 second)
+                    timeout = setTimeout(function () {
+                        console.log('Input Value:', input.value);
+                        if(LastSearch != input.value){
+                            Children = document.getElementById(`InvBox_${Page__Id}`).children
+                            for(let i = 0; i<Children.length; i++){
+                                document.getElementById(Children[i].id).style.display = 'none'
+                                console.log(Children[i].id)
+                            }
+                            for(let i = 0; i<Children.length; i++){
+                                if(Children[i].getAttribute("SearchTags").includes(input.value)){
+                                    document.getElementById(Children[i].id).style.display = ''
+                                    console.log(Children[i].id)
+                                }
+                            }
+                        }
+                        else{
+                            LastSearch = input.value
+                        }
+                    
+                        
+                    }, 50);
+                });
+                FetchPharmacyPage(id, Page__Id)
+                FetchPharmacyInventory(id, Page__Id)
+                const state = {'page_id': 1, 'user_id': 5}
+                const title = ''
+                const url = ``
+                history.pushState(state, title, url)
+            }
+            function DoctorPage(id){
+                for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                    document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+                }
+                Id = Page__Id
+                Page__Id++
+                console.log(Tab)
+                document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                    <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+
+                        <br><br>
+                        <div id="DoctorHeader_${Page__Id}" style="padding: 0% 2% 0% 2%; background-color: #ffffff">
+                            
+                        </div>
+                        <br>
+                        <div id="PharmacyStockHeader_${Page__Id}" style="padding: 0% 2% 0% 2%; background-color: #ffffff">
+                            <div class="Bold">Browse inventory:</div>
+                            <div id="InvBox_${Page__Id}"></div>
+                        </div>
+                    </div>
+                `
+                )
+                FetchDoctorPage(id, Page__Id)
+                const state = {'page_id': 1, 'user_id': 5}
+                const title = ''
+                const url = ``
+                history.pushState(state, title, url)
+            }
+            
+            function DoctorFilterPage(){
+                for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                    document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+                }
+                Id = Page__Id
+                Page__Id++
+                console.log(Tab)
+                document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                    <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+
+                        <br><br><br>
+                        <div id="DoctorHeader_${Page__Id}" class="Card">
+                            <div class="Medium">Filter for better results</div>
+                            <div class="row">
+                                <div class="column">
+                                    <select onchange="FetchFilterDoctor('${Page__Id}')" name="cars" id="Range_${Page__Id}">
+                                        <option value="5">5km</option>
+                                        <option value="10">10km</option>
+                                        <option value="15">15km</option>
+                                        <option value="30">30km</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <select onchange="FetchFilterDoctor('${Page__Id}')" name="type" id="Type_${Page__Id}">
+                                        <option value="General Physician">General physician</option>
+                                        <option value="Dermatologist">Dermatologist</option>
+                                        <option value="Neurologist">Neurologist</option>
+                                        <option value="Surgeon">Surgeon</option>
+                                        <option value="Psychiatrist">Psychiatrist</option>
+                                        <option value="Oncologistgeon">Oncologistgeon</option>
+                                        <option value="Pediatrician">Pediatrician</option>
+                                    </select>
+                                </div>
+                                <div class="column">
+                                    <select onchange="FetchFilterDoctor('${Page__Id}')" name="Price" id="Price_${Page__Id}">
+                                        <option value="200">₹200</option>
+                                        <option value="500">₹500</option>
+                                        <option value="1000">₹1000</option>
+                                        <option value="2000">₹2000</option>
+                                        <option value="5000">₹5000</option>
+                                        <option value="10000">₹10000</option>
+                                    </select>
+                                </div>
+                            </div>
+                                
+                        </div>
+                        <br>
+                        <div id="DoctorFilterResults_${Page__Id}">
+                            
+                        </div>
+                    </div>
+                `
+                )
+                FetchFilterDoctor(Id)
+                const state = {'page_id': 1, 'user_id': 5}
+                const title = ''
+                const url = ``
+                history.pushState(state, title, url)
+            }
+            function UserAppointmentPage(){
+                for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                    document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+                }
+                Id = Page__Id
+                Page__Id++
+                console.log(Tab)
+                document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                    <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+
+                        <br><br><br>
+
+                        <div id="UserAppointments_${Id}">
+                            
+                        </div>
+                    </div>
+                `
+                )
+                FetchUserAppointments(Id)
+                const state = {'page_id': 1, 'user_id': 5}
+                const title = ''
+                const url = ``
+                history.pushState(state, title, url)
+            }
+    </script>
+
+    <script>
+        function Register(TargetPageID){
+            Name = document.getElementById(`Name_${TargetPageID}`).value
+            UserName = document.getElementById(`UserName_${TargetPageID}`).value
+            Password = document.getElementById(`Password_${TargetPageID}`).value
+            Image = document.getElementById(`Image_${TargetPageID}`)
+            BirthDate = document.getElementById(`Biirthdate_${TargetPageID}`).value
+            
+            var data = new FormData()
+            if (Image.files[0]) {
+                data.append("Image", Image.files[0])
+            }
+            data.append("Name", Name)
+            data.append("Password", Password)
+            data.append("UserName", UserName)
+            data.append("BirthDate", BirthDate)
+            fetch(`/api/auth/register/regular`, {
+                method: 'POST',
+                headers: {
+                },
+                body: data
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data){
+
+                    if (data.status == true){
+                        localStorage.setItem('auth', 'token '+data.Key)
+                        location.reload(); 
+                    }
+                }
+            )
+        }
+        function SignIn(TargetPageID){
+            UserName = document.getElementById(`UserName_${TargetPageID}`).value
+            Password = document.getElementById(`Password_${TargetPageID}`).value
+            
+            var data = new FormData()
+            data.append("Password", Password)
+            data.append("UserName", UserName)
+            fetch(`/api/auth/login/regular`, {
+                method: 'POST',
+                headers: {
+                },
+                body: data
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data){
+
+                    if (data.status == true){
+                        localStorage.setItem('auth', 'token '+data.Key)
+                        location.reload(); 
+                    }
+                }
+            )
+        }
+
+        function FetchGenericDrugPage(Name, TargetPageID){
+            fetch(`/api/pharmacy/drug/generic?GenericName=${Name}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    document.getElementById(`DrugName_${TargetPageID}`).innerHTML = data.data.Name;
+                    document.getElementById(`DrugWrittenBy_${TargetPageID}`).innerHTML = "Written by: Ashutosh Singh";
+                    document.getElementById(`DrugUpdatedOn_${TargetPageID}`).innerHTML = "Last updated: October 11, 2023";
+                    if(data.data.Uses != null){
+                        document.getElementById(`DrugUsesContainer_${TargetPageID}`).style.display = ''
+                        document.getElementById(`DrugUses_${TargetPageID}`).innerHTML = `Uses of ${data.data.Name}`;
+                        document.getElementById(`DrugUsesInner_${TargetPageID}`).innerHTML = data.data.Uses  
+                    }     
+                    if(data.data.Mechanism != null){
+                        document.getElementById(`DrugMechanismContainer_${TargetPageID}`).style.display = ''
+                        document.getElementById(`DrugMechanism_${TargetPageID}`).innerHTML = `Mechanism of ${data.data.Name}`;
+                        document.getElementById(`DrugMechanismInner_${TargetPageID}`).innerHTML = data.data.Mechanism  
+                    } 
+                    if(data.data.SideEffects != null){
+                        document.getElementById(`DrugSideEffectsContainer_${TargetPageID}`).style.display = ''
+                        document.getElementById(`DrugSideEffects_${TargetPageID}`).innerHTML = `Side effects of ${data.data.Name}`;
+                        document.getElementById(`DrugSideEffectsInner_${TargetPageID}`).innerHTML = data.data.SideEffects  
+                    } 
+                    for(Brand in data.data.Brands){
+                        AvailableFormsInner = '';
+                        PriceLower = 100000000
+                        PriceUpper = 0
+                        FormCount = 0
+                        for(Form in data.data.Brands[Brand].Forms){
+                            FormCount++
+                            if(data.data.Brands[Brand].Forms[Form].Price>PriceUpper){
+                                PriceUpper = data.data.Brands[Brand].Forms[Form].Price;
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Price<PriceLower){
+                                PriceLower = data.data.Brands[Brand].Forms[Form].Price;
+                            }
+                            FormName = "Tablets"
+                            if(data.data.Brands[Brand].Forms[Form].Form == 0){
+                                FormName = "Instant release tablet"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 1){
+                                FormName = "Sustained release tablet"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 2){
+                                FormName = "Syrup"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 3){
+                                FormName = "Suppository"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 4){
+                                FormName = "IV"
+                            }
+                              
+                            AvailableFormsInner = AvailableFormsInner + `
+                                    <div onclick="DrugFormPage('${data.data.Brands[Brand].Forms[Form].id}')">
+                                        <div class="row" style="padding: 0px">
+                                            <div class="column bold"  style="padding: 0px">
+                                                ${data.data.Brands[Brand].Forms[Form].Name}
+                                            </div>
+                                            <div class="column" style="flex: 1 2">
+                                                ₹${data.data.Brands[Brand].Forms[Form].Price}
+                                            </div>
+                                        </div>
+                                        <div class="DGray medium" style="font-size: 14px">
+                                            Quantity: ${data.data.Brands[Brand].Forms[Form].Quantity}
+                                        </div>
+                                    </div>
+                                `
+                            }
+                            document.getElementById(`DrugBrandContainer_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                                <div class="Card">
+                                    <div class="row" style="width:100%">
+                                        <div class="column" style="width:60px">
+                                            <img src="${data.data.Brands[Brand].Image}" height="50px" width="50px">
+                                        </div>
+                                        <div class="column Bold" style="width:70%; height: 60px">
+                                            <div>
+                                                ${data.data.Brands[Brand].Name}
+                                            </div>
+                                            <div class="Gray Medium" style="font-size: 16px">
+                                                Mfg: ${data.data.Brands[Brand].Manafacturer}
+                                            </div>
+
+                                        </div>
+                                        <div class="column medium" style="width:70%; height: 60px; flex: 1 3 3; text-align:right; font-size: 14px">
+                                            <div>
+                                                ${FormCount} variants
+                                            </div>
+                                            <div>
+                                                ₹${PriceLower} to ₹${PriceUpper}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0% 2% 0% 2%">
+                                        ${AvailableFormsInner}
+                                    </div>
+                                </div>
+                                <br>
+                            `)
+                        }
+                    }
+                )
+        }
+        function FetchAvailableFormPage(id, TargetPageID){
+            fetch(`/api/pharmacy/drug/byform?FormID=${id}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    document.getElementById(`DrugName_${TargetPageID}`).innerHTML = data.data.Name;
+                    document.getElementById(`GenericName_${TargetPageID}`).innerHTML = `Generic name: ${data.data.Brand.GenericDrug.Name}`;
+                    document.getElementById(`Manafacturer_${TargetPageID}`).innerHTML = `Manafactured by: ${data.data.Brand.Manafacturer}`;
+                    if(data.data.Brand.GenericDrug.Uses != null){
+                        document.getElementById(`DrugUsesContainer_${TargetPageID}`).style.display = ''
+                        document.getElementById(`DrugUses_${TargetPageID}`).innerHTML = `Uses of ${data.data.Brand.GenericDrug.Name}`;
+                        document.getElementById(`DrugUsesInner_${TargetPageID}`).innerHTML = data.data.Brand.GenericDrug.Uses  
+                    }     
+                    if(data.data.Brand.GenericDrug.Mechanism != null){
+                        document.getElementById(`DrugMechanismContainer_${TargetPageID}`).style.display = ''
+                        document.getElementById(`DrugMechanism_${TargetPageID}`).innerHTML = `Mechanism of ${data.data.Brand.GenericDrug.Name}`;
+                        document.getElementById(`DrugMechanismInner_${TargetPageID}`).innerHTML = data.data.Brand.GenericDrug.Mechanism  
+                    } 
+                    if(data.data.Brand.GenericDrug.SideEffects != null){
+                        document.getElementById(`DrugSideEffectsContainer_${TargetPageID}`).style.display = ''
+                        document.getElementById(`DrugSideEffects_${TargetPageID}`).innerHTML = `Side effects of ${data.data.Brand.GenericDrug.Name}`;
+                        document.getElementById(`DrugSideEffectsInner_${TargetPageID}`).innerHTML = data.data.Brand.GenericDrug.SideEffects  
+                    } 
+                    for(Brand in data.data.Brands){
+                        AvailableFormsInner = '';
+                        PriceLower = 100000000
+                        PriceUpper = 0
+                        FormCount = 0
+                        for(Form in data.data.Brands[Brand].Forms){
+                            FormCount++
+                            if(data.data.Brands[Brand].Forms[Form].Price>PriceUpper){
+                                PriceUpper = data.data.Brands[Brand].Forms[Form].Price;
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Price<PriceLower){
+                                PriceLower = data.data.Brands[Brand].Forms[Form].Price;
+                            }
+                            FormName = "Tablets"
+                            if(data.data.Brands[Brand].Forms[Form].Form == 0){
+                                FormName = "Instant release tablet"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 1){
+                                FormName = "Sustained release tablet"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 2){
+                                FormName = "Syrup"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 3){
+                                FormName = "Suppository"
+                            }
+                            if(data.data.Brands[Brand].Forms[Form].Form == 4){
+                                FormName = "IV"
+                            }
+
+                            AvailableFormsInner = AvailableFormsInner + `
+                                    <div class="row">
+                                        <div class="column bold" style="">
+                                            ${FormName} ${data.data.Brands[Brand].Forms[Form].Dosage} ${data.data.Brands[Brand].Forms[Form].Unit}
+                                        </div>
+                                        <div class="column" style="flex: 1 2">
+                                            ₹${data.data.Brands[Brand].Forms[Form].Price}
+                                        </div>
+                                    </div>
+                                    <div class="DGray medium" style="font-size: 14px">
+                                        Quantity: ${data.data.Brands[Brand].Forms[Form].Quantity}
+                                    </div>
+                                `
+                            }
+                            document.getElementById(`DrugBrandContainer_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                                <div>
+                                    <div class="row" style="width:100%">
+                                        <div class="column" style="width:60px">
+                                            <img src="${data.data.Brands[Brand].Image}" height="50px" width="50px">
+                                        </div>
+                                        <div class="column Bold" style="width:70%; height: 60px">
+                                            <div>
+                                                ${data.data.Brands[Brand].Name}
+                                            </div>
+                                            <div class="Gray Medium" style="font-size: 16px">
+                                                Mfg: ${data.data.Brands[Brand].Manafacturer}
+                                            </div>
+
+                                        </div>
+                                        <div class="column medium" style="width:70%; height: 60px; flex: 1 3 3; text-align:right; font-size: 14px">
+                                            <div>
+                                                ${FormCount} variants
+                                            </div>
+                                            <div>
+                                                ₹${PriceLower} to ₹${PriceUpper}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0% 2% 0% 2%">
+                                        ${AvailableFormsInner}
+                                    </div>
+                                </div>
+                                <br>
+                            `)
+                        }
+                    }
+                )
+        }
+
+        function FetchAvailableLocations(id, TargetPageID){
+            PosLat = ''
+            PosLon = ''
+            if(LastLocation != null){
+                PosLat = LastLocation.coords.latitude
+                PosLon = LastLocation.coords.longitude
+            }
+            fetch(`/api/pharmacy/drug/searchform?FormID=${id}&PosLat=${PosLat}&PosLon=${PosLon}&Range=1`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    for(Pharmacy in data.data){
+                        Price = data.data[Pharmacy].Drug.Price;
+                        Discount = '';
+                        if(data.data[Pharmacy].Price != null){
+                            Price = data.data[Pharmacy].Price;
+                            Discount = Math.round(100-data.data[Pharmacy].Price*100/data.data[Pharmacy].Drug.Price) + '% off'
+                        }
+                        document.getElementById(`AvailableAt_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                            <div class="Card">
+                                <div class="row" style="width:100%" onclick="PharmacyPage(${data.data[Pharmacy].Pharmacy.id})">
+                                    <div class="column" style="width:60px">
+                                        <img src="${data.data[Pharmacy].Pharmacy.Image}" height="50px" width="50px">
+                                    </div>
+                                    <div class="column Bold" style="width:70%; height: 60px; flex: auto; padding-top: 3%">
+                                        <div>
+                                            ${data.data[Pharmacy].Pharmacy.Name}
+                                        </div>
+                                        <div class="Gray Medium" style="font-size: 16px">
+                                            ★★★★ 729 reviews
+                                        </div>
+
+                                    </div>
+                                    <div class="column medium" style="width:20%; height: 60px; text-align:right; font-size: 14px; padding-top: 3%">
+                                        <div>
+                                            ₹${Price}
+                                        </div>
+                                        <div>
+                                            ${Discount}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Medium" style="font-size: 16px; margin: 0% 2% 0% 2%; font-size: 14px">
+                                    Address: ${data.data[Pharmacy].Pharmacy.Address}
+                                </div>
+                                <br>
+                            </div>
+                        `)
+                    }
+                    for(Alternative in data.alternatives){
+                        Price = data.alternatives[Alternative].Drug.Price;
+                        Discount = '';
+                        if(data.alternatives[Alternative].Price != null){
+                            Price = data.alternatives[Alternative].Price;
+                            Discount = Math.round(100-data.alternatives[Alternative].Price*100/data.alternatives[Alternative].Drug.Price) + '% off'
+                        }
+                        document.getElementById(`AlternativesAvailable_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                            <div class="Card">
+                                <div class="row" style="width:100%">
+                                    <div class="column" style="width:60px">
+                                        <img src="${data.alternatives[Alternative].Pharmacy.Image}" height="50px" width="50px">
+                                    </div>
+                                    <div class="column Bold" style="width:70%; height: 60px; flex: auto; padding-top: 3%">
+                                        <div>
+                                            ${data.alternatives[Alternative].Pharmacy.Name}
+                                        </div>
+                                        <div class="Gray Medium" style="font-size: 16px">
+                                            ${data.alternatives[Alternative].Drug.Name}
+                                        </div>
+
+                                    </div>
+                                    <div class="column medium" style="width:20%; height: 60px; text-align:right; font-size: 14px; padding-top: 3%">
+                                        <div>
+                                            ₹${Price}
+                                        </div>
+                                        <div>
+                                            ${Discount}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Medium" style="font-size: 16px; margin: 0% 2% 0% 2%; font-size: 14px">
+                                    Address: ${data.alternatives[Alternative].Pharmacy.Address}
+                                </div>
+                                <br>
+                            </div>
+                        `)
+                    }
+                }
+            )
+        }
+
+        function FetchPharmacyPage(id, TargetPageID){
+            fetch(`/api/pharmacy/view?PharmacyId=${id}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    document.getElementById(`PharmacyHeader_${TargetPageID}`).innerHTML = `
+                        <br>    
+                        <div>
+                            <img src=${data.data.Image} style="width: 80px; height: 80px; border-radius: 50%">
+                        </div>
+                        <div class="Bold">
+                            ${data.data.Name}
+                        </div>
+                        <div class="Medium" style="font-size: 14px">
+                            ${data.data.Address}
+                        </div>
+                    `
+                }
+            )
+        }
+        
+        function FetchPharmacyInventory(id, TargetPageID){ 
+            fetch(`/api/pharmacy/view/stock?PharmacyId=${id}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                        for(Form in data.data){
+                            if(document.getElementById(`InvBox_Gen_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}`) == null){
+                                document.getElementById(`InvBox_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                                    <div class="Card" id="InvBox_Gen_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}" SearchTags="${data.data[Form].Brand.GenericDrug.Name}" style="border-bottom: 1px solid #bbb">
+                                        <div class="Bold">
+                                            ${data.data[Form].Brand.GenericDrug.Name}
+                                        </div>
+                                        <div class="Medium" style="font-size: 14px">
+                                            ${data.data[Form].Brand.GenericDrug.Uses}
+                                        </div>
+                                    </div>
+                                `)
+                            }
+                            if(document.getElementById(`InvBox_Bra_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}`) == null){
+                                document.getElementById(`InvBox_Gen_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                                    <div class="">
+                                        <div class="row" style="width:100%">
+                                            <div class="column" style="width:60px">
+                                                <img src="${data.data[Form].Brand.Image}" height="50px" width="50px">
+                                            </div>
+                                            <div class="column Bold" style="width:70%; height: 60px">
+                                                <div>
+                                                    ${data.data[Form].Brand.Name}
+                                                </div>
+                                                <div class="Gray Medium" style="font-size: 16px">
+                                                    Mfg: ${data.data[Form].Brand.Manafacturer}
+                                                </div>
+
+                                            </div>
+                                            <div class="column medium" style="width:70%; height: 60px; flex: 1 3 3; text-align:right; font-size: 14px">
+
+                                            </div>
+                                        </div>
+                                        <div style="margin: 0% 2% 0% 2%" id="InvBox_Bra_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}">
+                                        </div>
+                                    </div>
+                                `)
+                                document.getElementById(`InvBox_Gen_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}`).setAttribute(`SearchTags`, document.getElementById(`InvBox_Gen_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}`).getAttribute(`SearchTags`)+' '+data.data[Form].Brand.Name)
+                            }
+                            document.getElementById(`InvBox_Bra_${data.data[Form].Brand.GenericDrug.id}_${TargetPageID}`).insertAdjacentHTML('beforeend',`
+                                    <div class="row">
+                                        <div class="column bold" style="font-size: 14px">
+                                            <div class="Bold">
+                                                ${data.data[Form].Name}
+                                            </div>
+                                            <div class="" style="font-size: 14px">
+                                                ${data.data[Form].Brand.GenericDrug.Name} (${data.data[Form].Dosage} ${data.data[Form].Unit})
+                                            </div>
+                                            <div class="" style="font-size: 14px">
+                                                Quantity: ${data.data[Form].Quantity}
+                                            </div>
+                                        </div>
+                                        <div class="column" style="flex: 1 2">
+                                            ₹${data.data[Form].Price}
+                                        </div>
+                                    </div>
+
+
+                                `
+                            )
+                        }
+                    
+                    }
+                )
+            }
+            
+        function SearchDrugs(name, TargetPageID){
+            fetch(`/api/pharmacy/drug/search?query=${name}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    for(Drug in data.data){
+                        if(data.status == false){
+                            return
+                        }
+                        document.getElementById(`ResultsBox_Drugs_${TargetPageID}`).innerHTML = ''
+                        document.getElementById(`ResultsBox_Pharmacies_${TargetPageID}`).innerHTML = ''
+                        BrandContainer = ''
+                        for(Brand in data.data[Drug].Brands){
+                                BrandContainer = BrandContainer + `
+                                    <div>
+                                        <div class="row" style="width:100%">
+                                            <div class="Medium">
+                                                ${data.data[Drug].Brands[Brand].Name}
+                                            </div>
+                                        </div>
+                                    </div>
+                                `
+                        }   
+                        document.getElementById(`ResultsBox_Drugs_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                            <div class="Card" onclick="GenericDrugPage('${data.data[Drug].Name}')">
+                                <div class="Bold">
+                                    ${data.data[Drug].Name}
+                                </div>
+                                <div class="Medium" style="font-size: 14px">
+                                    ${data.data[Drug].Uses}
+                                </div>
+                                <div class="Bold" style="font-size: 14px">
+                                    Available brands>
+                                </div>
+                                <div style="margin: 0% 2% 0% 2%">
+                                    ${BrandContainer}
+                                </div>
+                            </div>
+                        `)
+                    }
+                    for(Pharmacy in data.pharmacies){
+                        document.getElementById(`ResultsBox_Pharmacies_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                            <div class="Card">
+                                <div class="row" style="width:100%" onclick="PharmacyPage(${data.pharmacies[Pharmacy].id})">
+                                    <div class="column" style="width:60px">
+                                        <img src="${data.pharmacies[Pharmacy].Image}" height="50px" width="50px">
+                                    </div>
+                                    <div class="column Bold" style="width:70%; height: 60px; flex: auto; padding-top: 3%">
+                                        <div>
+                                            ${data.pharmacies[Pharmacy].Name}
+                                        </div>
+                                        <div class="Gray Medium" style="font-size: 16px">
+                                            ★★★★ 729 reviews
+                                        </div>
+
+                                    </div>
+                                    <div class="column medium" style="width:20%; height: 60px; text-align:right; font-size: 14px; padding-top: 3%">
+
+                                    </div>
+                                </div>
+                                <div class="Medium" style="font-size: 16px; margin: 0% 2% 0% 2%; font-size: 14px">
+                                    Address: ${data.pharmacies[Pharmacy].Address}
+                                </div>
+                            </div>
+                            <br>
+                        `)
+                    }
+                }
+            )
+        }
+
+        function FetchDoctorPage(id, TargetPageID){
+            fetch(`/api/doctor/view?DoctorId=${id}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    Hospitals = ''
+                    for(Hospital in data.data.Hospitals){
+                        for(Timing in data.data.Hospitals[Hospital].Timings){
+                            console.log(data.data.Hospitals[Hospital].Timings[Timing].StartTime)
+                            const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+                            DayText = ''
+                            if(data.data.Hospitals[Hospital].Timings[Timing].Form == 0){
+                                DayText = WeekDays[data.data.Hospitals[Hospital].Timings[Timing].WeekDayCode]
+                            }   
+                            TimingsText = TimingsText + `
+                                <div id="Appointment_${data.data.Hospitals[Hospital].Timings[Timing].id}_${Page__Id}" class="Appointment_${data.data.Hospitals[Hospital].Timings[Timing].id} Card" onclick="BookAppointment(${data.data.Hospitals[Hospital].id}, ${data.data.Hospitals[Hospital].Timings[Timing].id}, ${Page__Id})" style="display: inline-block; text-align: center; border: 1px solid #bbb; padding: 5px; border-radius:5px">
+                                    ${DayText} <br> ${data.data.Hospitals[Hospital].Timings[Timing].StartTime}-${data.data.Hospitals[Hospital].Timings[Timing].EndTime}
+                                </div>`
+                        }
+                        Hospitals = Hospitals + `
+                            <div>
+                                <div class="row">
+                                    <div class="column Bold" style="flex: 8; padding: 0">
+                                        ${data.data.Hospitals[Hospital].Hospital.Name}
+                                    </div>
+                                    <div class="column Medium" style="flex: 1 2">
+                                        ₹${data.data.Hospitals[Hospital].Price}
+                                    </div>
+                                </div>
+                                <div class="Medium row">
+                                    <div class="column" style="font-size: 14px; padding: 0">
+                                        Address: ${data.data.Hospitals[Hospital].Hospital.Location}
+                                    </div>
+                                </div>
+                                <div style="overflow: auto; white-space: nowrap">
+                                    ${TimingsText}
+
+                                </div>
+                            </div>
+                            <hr>
+                        `
+                    }
+                    document.getElementById(`DoctorHeader_${TargetPageID}`).innerHTML = `
+                        <br>    
+                        <div class="row">
+                            <div class="column" style="flex: none">
+                                <img src=${data.data.Image} style="width: 80px; height: 80px; border-radius: 50%">
+                            </div>
+                            <div class="column" style="flex: none">
+                                <br>
+                                <div class="Bold">
+                                    ${data.data.Name}
+                                </div>
+                                <div class="Medium" style="font-size: 14px">
+                                    ${data.data.MetaInfo.Speciality}
+                                </div>
+                                <div class="Medium" style="font-size: 14px">
+                                    ${data.data.MetaInfo.Rating*10}% (${data.data.MetaInfo.Ratings} ratings)
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="Medium" style="font-size: 18px">clinic appointment</div>
+                        ${Hospitals}
+                        <br>
+                    `
+                }
+            )
+        }
+        function FetchFilterDoctor(TargetPageID){
+            Price = parseInt(document.getElementById(`Price_${TargetPageID}`).value)
+            Range = parseInt(document.getElementById(`Range_${TargetPageID}`).value)
+            Type = document.getElementById(`Type_${TargetPageID}`).value
+            if(LastLocation != null){
+                PosLat = LastLocation.coords.latitude
+                PosLon = LastLocation.coords.longitude
+            }
+            fetch(`/api/doctor/filter?Range=${Range}&Type=${Type}&Price=${Price}&PosLat=${PosLat}&PosLon=${PosLon}`, {
+                method: 'GET',
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    document.getElementById(`DoctorFilterResults_${TargetPageID}`).innerHTML = ``
+                    for(Doctor in data.data){
+                        Hospitals = ''
+                        TimingsText = ''
+                        for(Hospital in data.data[Doctor].Hospitals){
+                            TimingsText = ''
+                            for(Timing in data.data[Doctor].Hospitals[Hospital].Timings){
+                                console.log(data.data[Doctor].Hospitals[Hospital].Timings[Timing].StartTime)
+                                const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+                                DayText = ''
+                                if(data.data[Doctor].Hospitals[Hospital].Timings[Timing].Form == 0){
+                                    DayText = WeekDays[data.data[Doctor].Hospitals[Hospital].Timings[Timing].WeekDayCode]
+                                }   
+                                TimingsText = TimingsText + `
+                                    <div style="display: inline-block; text-align: center; border: 1px solid #bbb; padding: 5px; border-radius:5px">
+                                        ${DayText} <br> ${data.data[Doctor].Hospitals[Hospital].Timings[Timing].StartTime}-${data.data[Doctor].Hospitals[Hospital].Timings[Timing].EndTime}
+                                    </div>`
+                            }
+                            Hospitals = Hospitals + `
+                                <div class="Card">
+                                    <div class="row">
+                                        <div class="column Bold" style="flex: 8; padding: 0">
+                                            ${data.data[Doctor].Hospitals[Hospital].Hospital.Name}
+                                        </div>
+                                        <div class="column Medium" style="flex: 1 2">
+                                            ₹${data.data[Doctor].Hospitals[Hospital].Price}
+                                        </div>
+                                    </div>
+                                    <div class="Medium row">
+                                        <div class="column" style="font-size: 14px; padding: 0">
+                                            Address: ${data.data[Doctor].Hospitals[Hospital].Hospital.Location}
+                                        </div>
+                                    </div>
+                                    <div style="overflow: auto; white-space: nowrap">
+                                        ${TimingsText}
+
+                                    </div>
+                                </div>
+                                <br>
+                            `
+                        }
+                        document.getElementById(`DoctorFilterResults_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                                <br>    
+                                <div class="Card" onclick="DoctorPage(${data.data[Doctor].id})">
+                                    <div class="row" style="font-size: 14px">
+                                        <div class="column" style="flex: none">
+                                            <img src=${data.data[Doctor].Image} style="width: 80px; height: 80px; border-radius: 50%">
+                                        </div>
+                                        <div class="column" style="flex: none">
+                                            <div class="Bold">
+                                                ${data.data[Doctor].Name}
+                                            </div>
+                                            <div class="Medium" style="font-size: 14px">
+                                                ${data.data[Doctor].MetaInfo.Speciality}
+                                            </div>
+                                            <div class="Medium" style="font-size: 14px">
+                                                ${data.data[Doctor].MetaInfo.Rating*10}% (${data.data[Doctor].MetaInfo.Ratings} ratings)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ${Hospitals}
+                                </div>
+                                <hr>
+                            `
+                        )
+                    }
+                }
+            )
+        }
+
+        function FetchUserAppointments(TargetPageID){
+            UserAuthToken =  localStorage.getItem("auth")
+            fetch(`/api/doctor/listappointments`, {
+                method: 'GET',
+                headers:{
+                    'Authorization':UserAuthToken
+                }
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    for(Appointment in data.data){
+                        const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+                        DayText = ''
+                        if(data.data[Appointment].Timing.Form == 0){
+                            DayText = WeekDays[data.data[Appointment].Timing.WeekDayCode]
+                        }
+                        CompletionText = ''
+                        CancelText = ``
+                        PrescriptionsText = ''
+                        if(data.data[Appointment].DocHasConfirmed){
+                            CompletionText = 'Completed'
+                            PrescriptionsText = `
+                            <br>
+                                <div class="Bold">Prescriptions:</div>
+                            `
+                            for(Prescription in data.data[Appointment].Prescriptions){
+                                PrescriptionsText = PrescriptionsText+`
+                                <br>
+                                <div class="Card" style="border-bottom: 1px solid #bbb" onclick="DrugFormPage(${data.data[Appointment].Prescriptions[Prescription].Drug.id})">
+                                    <div class="Bold">
+                                        ${data.data[Appointment].Prescriptions[Prescription].Drug.Brand.GenericDrug.Name}
+                                    </div>
+                                    <div class="Medium" style="font-size: 14px">
+                                        ${data.data[Appointment].Prescriptions[Prescription].Drug.Brand.GenericDrug.Uses}
+                                    </div>
+                                    <div class="row">
+                                        <div class="column bold" style="font-size: 14px">
+                                            <div class="Bold">
+                                                ${data.data[Appointment].Prescriptions[Prescription].Drug.Name}
+                                            </div>
+                                            <div class="" style="font-size: 14px">
+                                                ${data.data[Appointment].Prescriptions[Prescription].Drug.Brand.GenericDrug.Name} (${data.data[Appointment].Prescriptions[Prescription].Drug.Dosage} ${data.data[Appointment].Prescriptions[Prescription].Unit})
+                                            </div>
+                                            <div class="" style="font-size: 14px">
+                                                Quantity: ${data.data[Appointment].Prescriptions[Prescription].Drug.Quantity}
+                                            </div>
+                                        </div>
+                                        <div class="column" style="flex: 1 2">
+                                            ₹${data.data[Appointment].Prescriptions[Prescription].Drug.Price}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="Bold">
+                                            Instructions:
+                                        </span>
+                                        ${data.data[Appointment].Prescriptions[Prescription].Instructions}
+                                    </div>
+                                    <div>
+                                        <span class="Bold">Quantity:</span>
+                                        ${data.data[Appointment].Prescriptions[Prescription].Quantity}
+                                    </div>
+                                </div>
+                                `
+                            }
+                        }else{
+                            CompletionText = 'pending'
+                            CancelText = `
+                                <br>    
+                                <div class="Card Bold" style="background-color: red; color: white; padding: 5px; text-align: center">
+                                    cancel
+                                </div>
+                            `
+                        }
+                        document.getElementById(`UserAppointments_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                            <div class="Card">
+                                <div class="row" style="font-size: 14px">
+                                    <div class="column" style="flex: none">
+                                        <img src=${data.data[Appointment].Doctor.Doctor.Image} style="width: 80px; height: 80px; border-radius: 50%">
+                                    </div>
+                                    <div class="column" style="flex: none">
+                                        <div class="Bold">
+                                            ${data.data[Appointment].Doctor.Doctor.Name}
+                                        </div>
+                                        <div class="Medium" style="font-size: 14px">
+                                            ${data.data[Appointment].Doctor.Doctor.MetaInfo.Speciality}
+                                        </div>
+                                        <div class="Medium" style="font-size: 14px">
+                                            ${data.data[Appointment].Doctor.Doctor.MetaInfo.Rating*10}% (${data.data[Appointment].Doctor.Doctor.MetaInfo.Ratings} ratings)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin: 2%">
+                                    ${CompletionText}
+                                </div>
+                                <div class="Card">
+                                    <div class="Medium"> 
+                                        ${DayText}
+                                    </div>
+                                    Time: ${data.data[Appointment].Timing.StartTime} to ${data.data[Appointment].Timing.EndTime}
+                                </div>
+                                ${CancelText}
+                                ${PrescriptionsText}
+                            </div>
+                        `)
+                    }
+                }
+            )
+        }
+
+        function BookAppointment(VisitID, TimingID, TargetPageID){
+            UserAuthToken = localStorage.getItem("auth")
+            fetch(`/api/doctor/appointment?VisitId=${VisitID}&Time=${TimingID}`, {
+                method: 'POST',
+                headers:{
+                    'Authorization':UserAuthToken
+                }
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    AppointmentIndicators = document.getElementsByClassName(`Appointment_${TimingID}`);
+                    for(var i = 0; i<AppointmentIndicators.length; i++){
+                        document.getElementById(AppointmentIndicators[i].id).setAttribute('style',  document.getElementById(AppointmentIndicators[i].id).getAttribute('style')+';background-color: green;');
+                    }
+                }
+            )
+        }
+
+    </script>
+    <script>
+        LastLocation = null
+        const successCallback = (position) => {
+            console.log(position);
+            LastLocation = position;
+            Back(); HomePage()
+        };                  
+        const errorCallback = (error) => {
+            console.log(error);
+        };
+        if(localStorage.getItem('auth') == null){
+            RegisterPage()
+        }
+        else{
+            RequestLocationPage();
+        }
+    </script>
+
+</html>

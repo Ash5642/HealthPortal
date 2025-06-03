@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    </head>
+
+    <style>
+        hr{
+            color: #fdfdfd
+        }
+        .topnav {
+            background-color: #fff;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+          }
+          
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+          
+        .topnav a.active {
+            background-color: #fff;
+            color: white;
+        }
+          
+        .topnav .icon {
+            display: none;
+        }
+        @media screen and (max-width: 600px) {
+            .topnav a:not(:first-child) {display: none;}
+            .topnav a.icon {
+                float: right;
+                display: block;
+            }
+        }
+          
+          /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+          @media screen and (max-width: 600px) {
+            .topnav.responsive {position: relative;}
+            .topnav.responsive a.icon {
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            .topnav.responsive a {
+              float: none;
+              display: block;
+              text-align: left;
+            }
+          }
+
+          .row {
+            display: flex;
+          }
+          
+          .column {
+            flex: auto;
+            padding: 5px;
+          }
+
+        @font-face{
+            font-family: OpenSansBold;
+            src: url(/static/Open_Sans/static/OpenSans-SemiBold.ttf)
+        }
+        @font-face{
+            font-family: OpenSansMedium;
+            src: url(/static/Open_Sans/static/OpenSans-Medium.ttf)
+        }
+        .Bold{
+            font-family: OpenSansBold
+        }
+        .Medium{
+            font-family: OpenSansMedium
+        }
+
+        .Gray{
+            color: #666666;
+        }
+        .DGray{
+            color: #aaa;
+        }
+        .Card{
+            border: 1px solid #ddd;
+            margin: 0% 2% 0% 2%;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 5px
+        }
+
+    </style>
+
+    <body style="max-height: 1000px; max-width: 400px; padding: 0px; margin: 0px; background-color:#f0f0f0">
+        <div class="topnav" id="myTopnav">
+            <a href="#home" class="active">
+                <img width="78" height="24" src=""
+            </a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div id="Tab">
+        </div>
+    </body>
+
+    <script>
+        var Page__Id = 1
+    </script>
+
+<script>
+    function OverLay(){
+            for (var thing = 0; thing < document.getElementsByClassName('navbar').length; thing++) {
+                document.getElementsByClassName('navbar')[thing].style.display = 'none'
+            }
+            document.getElementById('overlay').style.display = ''
+                const state = { 'page_id': 1, 'user_id': 5 }
+                const title = ''
+                const url = window.location.pathname
+                history.pushState(state, title, url)
+        }
+        function Back(){
+            history.go(-1)
+        }
+        function Back_Other(){
+            
+            MainBody = document.getElementById("Tab")
+            MainBody.removeChild(MainBody.lastElementChild)
+            if(document.getElementById("Tab").lastElementChild){
+                document.getElementById("Tab").lastElementChild.style.dispay = ''
+                if (document.getElementById("Tab").lastElementChild.getAttribute('show_statusbar')=='false'){
+                }
+                else{
+                    
+                }
+            if (document.getElementById("Tab").lastElementChild.getAttribute('class').toString().includes('Animate-right')){
+                document.getElementById("Tab").lastElementChild.setAttribute('class', 'Animate-left BodyPage')
+            }
+            if (document.getElementById("Tab").lastElementChild.getAttribute('class').toString().includes('Animate-bottom')){
+                document.getElementById("Tab").lastElementChild.setAttribute('class', 'Animate-top BodyPage')
+            }
+            else{
+                document.getElementById("Tab").lastElementChild.setAttribute('class', 'Animate-left BodyPage')
+            }
+            document.getElementById(MainBody.lastElementChild.id).style.display = ''
+            }
+
+        }
+        function HideStuff(){
+            history.go(-1)
+        }
+        function HideStuffOther(){
+            if(document.getElementById("mySidebar")){
+                document.getElementById("mySidebar").style.width = "0"
+            }
+            document.getElementsByClassName('navb')
+            for (var thing = 0; thing < document.getElementsByClassName('navb').length; thing++) {
+                document.getElementsByClassName('navb')[thing].style.display = 'none'
+            }
+            document.getElementById('overlay').style.display = 'none'
+            for (var thing = 0; thing < document.getElementsByClassName('navbar').length; thing++) {
+                document.getElementsByClassName('navbar')[thing].style.display = ''
+            }
+        }
+        function OverLay(){
+            for (var thing = 0; thing < document.getElementsByClassName('navbar').length; thing++) {
+                document.getElementsByClassName('navbar')[thing].style.display = 'none'
+            }
+            document.getElementById('overlay').style.display = ''
+            const state = { 'page_id': 1, 'user_id': 5 }
+            const title = ''
+            const url = window.location.pathname
+            history.pushState(state, title, url)
+        }
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "80vw";
+            OverLay()
+        }
+        window.addEventListener('popstate', 
+            function (event) {
+                Back_Other()
+            }
+        )
+    </script>
+
+    <script>
+        function RequestLocationPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br><br>
+                    <div id="SearchArea" style"text-align: center, font-size: 30px; width: 100%">
+                        please grant location access to use this app
+                    </div>
+                </div>
+            `
+            )
+            if(LastLocation == null){
+                navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+            }
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function RegisterPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            HomeId = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br>
+
+                    <div id="SearchArea" >
+                        <div>
+                            <img id="ImageP_${Id}" style="width: 60px; height: 60px; margin: 10%; border-radius: 50%" onclick="document.getElementById('Image_${Id}').click()">
+                        </div>
+                        <div style="position: absolute; width:100%">
+                            <input id="UserName_${Id}" placeholder="username" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Name_${Id}" placeholder="Name" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Password_${Id}" placeholder="Password" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br><br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Biirthdate_${Id}" placeholder="birth date" type="date" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br><br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Speciality_${Id}" placeholder="Speciality" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br><br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Qualifications_${Id}" placeholder="Qualifications" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <input id="Image_${Id}" type="file" id="img" name="img" accept="image/*" style="display: none" onchange="UpdateImage('Image_${Id}', 'ImageP_${Id}')">
+                    </div>
+                    <br><br><br>
+                    <div onclick="Register(${Id})" class="Card" style="width: 80%; margin: 0% 10% 0% 10%">Register</div>
+
+                    <div style="text-align: center" class="Gray" onclick="LogInPage()">
+                        have an account? sign in instead
+                    </div>
+                </div>
+            `
+            )
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function LogInPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            HomeId = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br>
+
+                    <div id="SearchArea" >
+                        <div style="position: absolute; width:100%">
+                            <input id="UserName_${Id}" placeholder="username" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                        <br>
+                        <br>
+                        <div style="position: absolute; width:100%">
+                            <input id="Password_${Id}" placeholder="Password" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div onclick="SignIn(${Id})" class="Card" style="width: 80%; margin: 0% 10% 0% 10%">Sign in</div>
+                    <div style="text-align: center" class="Gray" onclick="RegisterPage()">
+                        new? register now!
+                    </div>
+                </div>
+            `
+            )
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function PatientsListPage(){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br><br>
+                    <div id="SearchArea" >
+                        <div style="position: absolute; width:100%">
+                            <input id="SearchBar_${Id}" placeholder="Search upcoming patients" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%; background-color: #fdfdfd; border: 1px solid #999;border-radius: 5px;height: 30px;">
+                        </div>
+                    </div>
+                    <br><br>
+                    <div id="Patients_${Id}"></div>
+                </div>
+            `
+            )
+            FetchPatientsList(Id)
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+
+        function ManageAppointmentPage(id){
+            for (var Page = 0; Page < document.getElementsByClassName('BodyPage').length; Page++) {
+                document.getElementsByClassName('BodyPage')[Page].style.display = 'none'
+            }
+            Id = Page__Id
+            Page__Id++
+            console.log(Tab)
+            document.getElementById("Tab").insertAdjacentHTML('beforeend', `
+                <div class="BodyPage Animate-right" id="BodyPage_${Id}" style="overflow-y: scroll; max-height: 100vh" data_loaded="0" data_loaded="0" show_statusbar="false">
+                    <br><br><br><br>
+                    <div id="PatientHeader_${Id}"></div>
+                    <br>
+                    <div id="Prescriptions_${Id}"></div>
+                    <div id="AddPrescriptions_${Id}" onclick="AddPrescriptionsElement(${Id}, ${id})" class="Card" style="text-align: center">+Add Prescription</div>
+                </div>
+            `
+            )
+            FetchPatient(id, Id)
+            const state = {'page_id': 1, 'user_id': 5}
+            const title = ''
+            const url = ``
+            history.pushState(state, title, url)
+        }
+        
+    </script>
+
+    <script>
+        function Register(TargetPageID){
+            Name = document.getElementById(`Name_${TargetPageID}`).value
+            UserName = document.getElementById(`UserName_${TargetPageID}`).value
+            Password = document.getElementById(`Password_${TargetPageID}`).value
+            Image = document.getElementById(`Image_${TargetPageID}`)
+            BirthDate = document.getElementById(`Biirthdate_${TargetPageID}`).value
+            Qualifications = document.getElementById(`Qualifications_${TargetPageID}`).value
+            Speciality = document.getElementById(`Speciality_${TargetPageID}`).value
+            var data = new FormData()
+            if (Image.files[0]) {
+                data.append("Image", Image.files[0])
+            }
+            data.append("Name", Name)
+            data.append("Password", Password)
+            data.append("UserName", UserName)
+            data.append("BirthDate", BirthDate)
+            data.append("Qualifications", Qualifications)
+            data.append("Speciality", Speciality)
+            fetch(`/api/auth/register/doctor`, {
+                method: 'POST',
+                headers: {
+                },
+                body: data
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data){
+
+                    if (data.status == true){
+                        localStorage.setItem('auth',data.Key)
+                        location.reload(); 
+                    }
+                }
+            )
+        }
+        function SignIn(TargetPageID){
+            UserName = document.getElementById(`UserName_${TargetPageID}`).value
+            Password = document.getElementById(`Password_${TargetPageID}`).value
+            
+            var data = new FormData()
+            data.append("Password", Password)
+            data.append("UserName", UserName)
+            fetch(`/api/auth/login/regular`, {
+                method: 'POST',
+                headers: {
+                },
+                body: data
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data){
+
+                    if (data.status == true){
+                        localStorage.setItem('auth', 'token '+data.Key)
+                        location.reload(); 
+                    }
+                }
+            )
+        }
+        function UpdateImage(from, target){
+            var selectedFile = document.getElementById(from).files[0];
+            var img = document.getElementById(target)
+
+            var reader = new FileReader();
+            reader.onload = function(){
+                img.src = this.result
+            }
+            reader.readAsDataURL(selectedFile);
+        }
+        function FetchPatientsList(TargetPageID){
+            UserAuthToken =  localStorage.getItem("auth")
+            fetch(`/api/provider/upcoming`, {
+                method: 'GET',
+                headers:{
+                    'Authorization':UserAuthToken
+                }
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    console.log(data.data)
+                    for(Patient in data.data){
+                        document.getElementById(`Patients_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                            <div class="Card" onclick="ManageAppointmentPage(${data.data[Patient].id})">
+                                <div class="row" style="font-size: 14px">
+                                    <div class="column" style="flex: none">
+                                        <img src=${data.data[Patient].Patient.Image} style="width: 80px; height: 80px; border-radius: 50%">
+                                    </div>
+                                    <div class="column" style="flex: none">
+                                        <div class="Bold">
+                                            ${data.data[Patient].Patient.Name}
+                                        </div>
+                                        <div class="Medium" style="font-size: 14px">
+                                            ${data.data[Patient].Patient.BirthDate}
+                                        </div>
+                                        <div class="Medium" style="font-size: 14px">
+                                            ${data.data[Patient].Timing.StartTime} to ${data.data[Patient].Timing.EndTime}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `)
+                    }
+                   
+                }
+            )
+        }
+
+        function FetchPatient(id, TargetPageID){
+            UserAuthToken =  localStorage.getItem("auth")
+            fetch(`/api/provider/appointments?AppointmentId=${id}`, {
+                method: 'GET',
+                headers:{
+                    'Authorization':UserAuthToken
+                }
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    if(data.status == false){
+                        return
+                    }
+                    console.log(data.data)
+                    document.getElementById(`PatientHeader_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                        <div class="Card">
+                            <div class="row" style="font-size: 14px">
+                                <div class="column" style="flex: none">
+                                    <img src=${data.data.Patient.Image} style="width: 80px; height: 80px; border-radius: 50%">
+                                </div>
+                                <div class="column" style="flex: none">
+                                    <div class="Bold">
+                                        ${data.data.Patient.Name}
+                                    </div>
+                                    <div class="Medium" style="font-size: 14px">
+                                        ${data.data.Patient.BirthDate}
+                                    </div>
+                                    <div class="Medium" style="font-size: 14px">
+                                        ${data.data.Timing.StartTime} to ${data.data.Timing.EndTime}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `)
+                    for (Prescription in data.data.Prescriptions){
+                        document.getElementById(`Prescriptions_${TargetPageID}`).insertAdjacentHTML(`beforeend`, `
+                            <div class="Card" id="DrugContainer_${TargetPageID}_${Prescription}" DrugId="${data.data.Prescriptions[Prescription].Drug.id}">
+                                <br>
+                                <div>
+                                    <input disabled value="${data.data.Prescriptions[Prescription].Drug.Name}" class="Card" id="SearchBar_${TargetPageID}_${Prescription}" placeholder="Search drug" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%">
+                                </div>
+                                <div class="Card" style="display: none;width: 80%; margin: 0% 10% 0% 10%" id="DrugResults_${TargetPageID}_${Prescription}"></div>
+                                <br>
+                                <div>
+                                    <input disabled value="${data.data.Prescriptions[Prescription].Instructions}" class="Card" id="Instructions_${TargetPageID}_${Prescription}" placeholder="Add instructions" style="width: 80%; margin: 0% 10% 0% 10%">
+                                </div>
+                                <br>
+                                <div>
+                                    <input disabled value="${data.data.Prescriptions[Prescription].Lenght}" class="Card" id="Quantity_${TargetPageID}_${Prescription}" placeholder="Quantity" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%">
+                                </div>
+                                <br>
+                                <div>
+                                    <input disabled value="${data.data.Prescriptions[Prescription].Quantity}" class="Card" id="Lenght_${TargetPageID}_${Prescription}" placeholder="Length" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%">
+                                </div>
+                                <br>
+                            </div>
+                        `)
+                    }
+                    
+                   
+                }
+            )
+        }
+
+    </script>
+    <script>
+        function AddPrescriptionsElement(TargetPageID, id){
+            Lenght = document.getElementById(`Prescriptions_${TargetPageID}`).childElementCount
+            document.getElementById(`Prescriptions_${TargetPageID}`).insertAdjacentHTML('beforeend', `
+                <div class="Card" id="DrugContainer_${TargetPageID}_${Lenght}" DrugId="">
+                    <br>
+                    <div>
+                        <input onkeyup="SearchDrug(${TargetPageID}, ${Lenght})" class="Card" id="SearchBar_${TargetPageID}_${Lenght}" placeholder="Search drug" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%">
+                    </div>
+                    <div class="Card" style="display: none;width: 80%; margin: 0% 10% 0% 10%" id="DrugResults_${TargetPageID}_${Lenght}"></div>
+                    <br>
+                    <div>
+                        <input class="Card" id="Instructions_${TargetPageID}_${Lenght}" placeholder="Add instructions" style="width: 80%; margin: 0% 10% 0% 10%">
+                    </div>
+                    <br>
+                    <div>
+                        <input class="Card" id="Quantity_${TargetPageID}_${Lenght}" placeholder="Quantity" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%">
+                    </div>
+                    <br>
+                    <div>
+                        <input class="Card" id="Lenght_${TargetPageID}_${Lenght}" placeholder="Length" type="numeric" style="width: 80%; margin: 0% 10% 0% 10%">
+                    </div>
+                    <br>
+                    <div id="DrugControls_${TargetPageID}_${Lenght}" class="row" style="width: 80%; margin: 0% 10% 0% 10%">
+                        <div onclick="AddPrescription(${TargetPageID}, ${Lenght}, ${id})" class="column Card Bold" style="text-align: center; padding: 5px" oncli>
+                            conmfirm
+                        </div>
+                        <div class="column Card Medium" style="text-align: center; padding: 5px; background-color: red; color: white; border: none" onclick="document.getElementById('DrugContainer_${TargetPageID}_${Lenght}').remove()">
+                            discard
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            `)
+        }
+        function SearchDrug(TargetPageID, SubElement){  
+            SearchTerm = document.getElementById(`SearchBar_${TargetPageID}_${SubElement}`).value
+            UserAuthToken =  localStorage.getItem("auth")
+            fetch(`/api/pharmacy/drug/searchformname?query=${SearchTerm}`, {
+                method: 'GET',
+                headers:{
+                    'Authorization':UserAuthToken
+                }
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data) {
+                    document.getElementById(`DrugResults_${TargetPageID}_${SubElement}`).innerHTML = ''
+                    document.getElementById(`DrugResults_${TargetPageID}_${SubElement}`).style.display = ''
+                    for(Drug in data.data){
+                        document.getElementById(`DrugResults_${TargetPageID}_${SubElement}`).insertAdjacentHTML('beforeend', `
+                            <div onclick="
+                                document.getElementById('DrugContainer_${TargetPageID}_${SubElement}').setAttribute('DrugId', '${data.data[Drug].id}'); 
+                                document.getElementById('DrugResults_${TargetPageID}_${SubElement}').innerHTML = ''; 
+                                document.getElementById('DrugResults_${TargetPageID}_${SubElement}').style.display = 'none';
+                                document.getElementById('SearchBar_${TargetPageID}_${SubElement}').value = '${data.data[Drug].Name}';
+                            
+                            ">
+                                <div class="Bold">
+                                    ${data.data[Drug].Name}
+                                </div>
+                                <div class="Medium" style="font-size: 14px">
+                                    ${data.data[Drug].Brand.GenericDrug.Name} (${data.data[Drug].Dosage} ${data.data[Drug].Unit})
+                                </div>
+                                <div class="Medium Gray" style="font-size: 14px">
+                                    ${data.data[Drug].Brand.GenericDrug.Uses}
+                                </div>
+                                <br>
+                            </div>
+                        `)
+                    }
+                }
+            )
+        }
+
+        function AddPrescription(TargetPageID, SubElement, id){
+            DrugId = document.getElementById(`DrugContainer_${TargetPageID}_${SubElement}`).getAttribute('DrugId')
+            Instructions = document.getElementById(`Instructions_${TargetPageID}_${SubElement}`).value
+            Lenght = document.getElementById(`Lenght_${TargetPageID}_${SubElement}`).value
+            Quantity = document.getElementById(`Quantity_${TargetPageID}_${SubElement}`).value
+            fetch(`/api/provider/appointments?AppointmentId=${id}`, {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Authorization':UserAuthToken
+                },
+                'body':JSON.stringify(
+                    {
+                        "Prescriptions":[
+                            {
+                                "id":id,
+                                "Instructions":Instructions,
+                                "Quantity":Quantity,
+                                "Lenght":Lenght,
+                                "Drug":DrugId
+                            }
+                        ]
+                    }
+                )
+            })
+            .then(resp => resp.json())
+            .then(
+                function (data){
+                    if(data.status == false){
+
+                    }
+                    document.getElementById(`DrugContainer_${TargetPageID}_${SubElement}`).disabled = true
+                    document.getElementById(`DrugControls_${TargetPageID}_${SubElement}`).style.display = 'none'
+                }
+            )
+            
+        }
+
+    </script>
+    <script>
+        LastLocation = null
+        const successCallback = (position) => {
+            console.log(position);
+            LastLocation = position;
+            Back(); PatientsListPage()
+        };                  
+        const errorCallback = (error) => {
+            console.log(error);
+        };
+        if(localStorage.getItem('auth') == null){
+            RegisterPage()
+        }
+        else{
+            RequestLocationPage();
+        }
+    </script>
+
+</html>
