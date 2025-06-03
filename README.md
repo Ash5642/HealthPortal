@@ -15,6 +15,7 @@ Features
 
   
 **Pharmacy**
+
   **Drug database**: has support for a database of drugs with uses, side effetcts, available brands, etc.
   
   **Equivalents**: application can recommend equivalent drugs with availability, pricing, etc.
